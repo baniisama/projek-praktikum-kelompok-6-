@@ -3,13 +3,24 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 
+/*
+KELOMPOK 6
+ANGGOTA:
+1. FATHIR AR RABBANI
+2. MUHAMMAD ADITYA RAYYAN
+3. KEMAS MUHAMMAD RAVA PUTRA WIJAYA
+4. MUHAMAD RABEL
+5. MUHAMAD FADLY FATHONY
+6. JEHAN SYEIRA ADINNIA
+7. CHALISA RANIAH ESTININGTYAS
+ */
+
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.io.File;
 import java.io.FileWriter;
-import java.io.IOException;
 import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
@@ -97,7 +108,7 @@ class ProductCatalog {
 
     ProductCatalog() {
 
-        addProduct(new Product("Thai tea", 28000));
+        addProduct(new Product("Thai tea", 14000));
         addProduct(new Product("Nasi Goreng", 15000));
         addProduct(new Product("Mie Ayam", 12000));
         addProduct(new Product("Es Teh", 5000));
