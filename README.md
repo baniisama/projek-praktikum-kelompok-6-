@@ -1,1 +1,63 @@
-tum tumng sahur
+# 🧾 Aplikasi Kasir Sederhana
+
+Aplikasi Kasir Sederhana adalah program berbasis **Java** dengan antarmuka **GUI** yang dirancang untuk membantu proses transaksi penjualan secara mudah dan praktis. Cocok digunakan sebagai project pembelajaran Java Desktop, terutama untuk memahami konsep GUI, event handling, serta pengelolaan data transaksi.
+
+---
+
+## Fitur Utama
+
+- 🛍️ **Pilih Item** — Pilih produk langsung dari daftar menu/barang yang tersedia
+- ➕ **Tambah Item Custom** — Tambahkan item secara manual yang tidak ada di daftar
+- 💰 **Set Harga Item Custom** — Tentukan sendiri harga untuk setiap item yang ditambahkan
+- 🧮 **Hitung Total Otomatis** — Total belanja dihitung secara real-time
+- 🏷️ **Diskon Transaksi** — Terapkan diskon persentase maupun nominal pada total belanja
+- 🖨️ **Cetak Struk** — Generate dan cetak struk transaksi secara otomatis
+- 🖥️ **GUI Ringan & Intuitif** — Antarmuka sederhana yang mudah dipahami
+
+---
+
+## Elemen yang Digunakan
+
+| Elemen | Keterangan |
+|---|---|
+| Java | Bahasa pemrograman utama |
+| Java Swing / AWT | Library GUI untuk tampilan desktop |
+| OOP | Pendekatan Object Oriented Programming |
+
+---
+
+## Tujuan Project
+
+Project ini dibuat untuk mempelajari:
+
+- Pembuatan aplikasi desktop menggunakan Java GUI (Swing/AWT)
+- Pengelolaan data transaksi kasir sederhana
+- Implementasi logika perhitungan total dan diskon
+- Pembuatan dan pencetakan struk transaksi otomatis
+
+---
+
+## Cara Menjalankan
+
+1. **Download** file di bagian release
+2. **Run** file  `Main.java`
+
+---
+
+## Contoh Penggunaan
+
+1. Pilih item yang tersedia dari daftar menu
+2. Tambahkan item custom jika diperlukan
+3. Tentukan harga untuk item custom yang ditambahkan
+4. Masukkan diskon (jika ada)
+5. Lihat total belanja yang dihitung otomatis
+6. Cetak struk transaksi
+
+---
+
+## Lisensi
+
+Project ini dibuat untuk keperluan akademik dan pembelajaran. Bebas untuk digunakan dan dimodifikasi.
+
+---
+KELOMPOK 6 P1 TEKNIK INFORMATIKA UNIVERSITAS SRIWIJAYA
