@@ -6,11 +6,11 @@
 /*
 KELOMPOK 6
 ANGGOTA:
-1. FATHIR AR RABBANI
-2. MUHAMMAD ADITYA RAYYAN
-3. KEMAS MUHAMMAD RAVA PUTRA WIJAYA
-4. MUHAMAD RABEL
-5. MUHAMAD FADLY FATHONY
+1. FATHIR AR RABBANI                 (09021382530135)
+2. MUHAMMAD ADITYA RAYYAN            (09021382530147)
+3. KEMAS MUHAMMAD RAVA PUTRA WIJAYA  (09021382530144)
+4. MUHAMAD RABEL                     (09021382530161)
+5. MUHAMAD FADLY FATHONY             (09021282530041)
 6. JEHAN SYEIRA ADINNIA
 7. CHALISA RANIAH ESTININGTYAS
  */
@@ -21,7 +21,6 @@ import javax.swing.table.DefaultTableModel;
 import java.awt.*;
 import java.io.File;
 import java.io.FileWriter;
-import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
@@ -53,7 +52,7 @@ class Product {
 class CartItem {
 
     private final Product product;
-    private final int quantity;
+    private int quantity;
 
     CartItem(Product product, int quantity) {
         this.product = product;
@@ -68,6 +67,10 @@ class CartItem {
         return quantity;
     }
 
+    void addQuantity(int quantity) {
+        this.quantity += quantity;
+    }
+
     int getSubtotal() {
         return product.getPrice() * quantity;
     }
@@ -78,11 +81,34 @@ class ShoppingCart {
     private final List<CartItem> items = new ArrayList<>();
 
     void addItem(Product product, int quantity) {
+
+        for (CartItem item : items) {
+
+            boolean sameName =
+                    item.getProduct().getName().equalsIgnoreCase(
+                            product.getName()
+                    );
+
+            boolean samePrice =
+                    item.getProduct().getPrice() == product.getPrice();
+
+            if (sameName && samePrice) {
+                item.addQuantity(quantity);
+                return;
+            }
+        }
+
         items.add(new CartItem(product, quantity));
     }
 
     void clear() {
         items.clear();
+    }
+
+    void removeItemAt(int index) {
+        if (index >= 0 && index < items.size()) {
+            items.remove(index);
+        }
     }
 
     List<CartItem> getItems() {
@@ -169,13 +195,30 @@ class PromoCode {
 
 class Currency {
 
-    private static final NumberFormat FORMATTER =
-            NumberFormat.getCurrencyInstance(
-                    Locale.of("id", "ID")
-            );
-
     static String format(int amount) {
-        return FORMATTER.format(amount);
+
+        boolean negative = amount < 0;
+        int value = Math.abs(amount);
+        String digits = String.valueOf(value);
+        StringBuilder result = new StringBuilder();
+        int count = 0;
+
+        for (int i = digits.length() - 1; i >= 0; i--) {
+
+            if (count == 3) {
+                result.insert(0, ".");
+                count = 0;
+            }
+
+            result.insert(0, digits.charAt(i));
+            count++;
+        }
+
+        if (negative) {
+            result.insert(0, "-");
+        }
+
+        return "Rp" + result;
     }
 }
 
@@ -282,6 +325,7 @@ class CashierFrame extends JFrame {
     private JButton jButton4;
     private JButton jButton5;
     private JButton jButton6;
+    private JButton jButton7;
 
     private DefaultTableModel tableModel;
     // End of variables declaration
@@ -341,6 +385,7 @@ class CashierFrame extends JFrame {
         jButton4 = new JButton();
         jButton5 = new JButton();
         jButton6 = new JButton();
+        jButton7 = new JButton();
 
         tableModel = new DefaultTableModel(
                 new Object[]{
@@ -386,9 +431,10 @@ class CashierFrame extends JFrame {
         jButton4.setText("Hitung Kembalian");
         jButton5.setText("Reset");
         jButton6.setText("Export Struk TXT");
+        jButton7.setText("Delete Item");
 
         jTable1.setRowHeight(25);
-        jTable1.setEnabled(false);
+        jTable1.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
 
         jLabel7.setFont(new Font("Segoe UI", Font.BOLD, 16));
         jLabel8.setFont(new Font("Segoe UI", Font.BOLD, 16));
@@ -408,6 +454,8 @@ class CashierFrame extends JFrame {
         jButton5.addActionListener(evt -> resetTransaction());
 
         jButton6.addActionListener(evt -> exportReceipt());
+
+        jButton7.addActionListener(evt -> deleteSelectedItem());
 
         GroupLayout layout = new GroupLayout(mainPanel);
         mainPanel.setLayout(layout);
@@ -449,6 +497,9 @@ class CashierFrame extends JFrame {
                         )
 
                         .addComponent(jScrollPane1)
+
+                        .addComponent(jButton7,
+                                GroupLayout.Alignment.TRAILING)
 
                         .addGroup(layout.createSequentialGroup()
 
@@ -538,6 +589,10 @@ class CashierFrame extends JFrame {
                         .addGap(20)
 
                         .addComponent(jScrollPane1)
+
+                        .addGap(10)
+
+                        .addComponent(jButton7)
 
                         .addGap(20)
 
@@ -691,6 +746,26 @@ class CashierFrame extends JFrame {
         }
 
         updateTotals();
+    }
+
+    private void deleteSelectedItem() {
+
+        int selectedRow = jTable1.getSelectedRow();
+
+        if (selectedRow == -1) {
+
+            JOptionPane.showMessageDialog(
+                    this,
+                    "Pilih item yang ingin dihapus"
+            );
+
+            return;
+        }
+
+        int modelRow = jTable1.convertRowIndexToModel(selectedRow);
+        cart.removeItemAt(modelRow);
+        refreshTable();
+        jLabel10.setText(Currency.format(0));
     }
 
     private void updateTotals() {
