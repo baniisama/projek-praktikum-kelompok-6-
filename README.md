@@ -18,11 +18,11 @@ Aplikasi Kasir Sederhana adalah program berbasis **Java** dengan antarmuka **GUI
 
 ## Elemen yang Digunakan
 
-| Elemen | Keterangan |
-|---|---|
-| Java | Bahasa pemrograman utama |
-| Java Swing / AWT | Library GUI untuk tampilan desktop |
-| OOP | Pendekatan Object Oriented Programming |
+| Elemen |
+|---|
+| Java |
+| Java Swing / AWT |
+| OOP |
 
 ---
 
