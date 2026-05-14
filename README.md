@@ -8,11 +8,11 @@ Aplikasi Kasir Sederhana adalah program berbasis **Java** dengan antarmuka **GUI
 
 - 🛍️ **Pilih Item** — Pilih produk langsung dari daftar menu/barang yang tersedia
 - ➕ **Tambah Item Custom** — Tambahkan item secara manual yang tidak ada di daftar
-- 💰 **Set Harga Item Custom** — Tentukan sendiri harga untuk setiap item yang ditambahkan
-- 🧮 **Hitung Total Otomatis** — Total belanja dihitung secara real-time
-- 🏷️ **Diskon Transaksi** — Terapkan diskon persentase maupun nominal pada total belanja
-- 🖨️ **Cetak Struk** — Generate dan cetak struk transaksi secara otomatis
-- 🖥️ **GUI Ringan & Intuitif** — Antarmuka sederhana yang mudah dipahami
+- 💰 **Harga Item Custom** — Tentukan sendiri harga untuk setiap item yang ditambahkan
+- 🧮 **Matematis** — Total belanja dihitung secara real-time
+- 🏷️ **Diskon** — Terapkan diskon persentase maupun nominal pada total belanja
+- 🖨️ **Struk** — Generate dan cetak struk transaksi secara otomatis
+- 🖥️ **Ringan** — Antarmuka sederhana yang mudah dipahami
 
 ---
 
